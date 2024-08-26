@@ -1,0 +1,269 @@
+
+/**
+ * remember to import new fonts with existing ones 
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jockey+One&display=swap');
+
+ html, body {
+    height: 100%;
+    margin: 0;
+  }
+body {
+    overflow: hidden;
+}
+body {
+    color: white;
+}
+header {
+    padding: 1em;
+    margin-left: 80px;
+    margin-top: 80px;
+}
+ul {
+    padding-left: 70px;
+}
+li {
+    display: inline;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    padding: 5px;
+}
+a {
+    color: #F66B6A;
+    text-decoration: none;
+    padding-left: 10px;
+}
+/*giving same font ll this section */
+section {
+    margin-left: 80px;
+    
+    font-family: 'Jockey One', sans-serif;
+}
+.SaleImg {
+    display: flex;
+    justify-content: right;
+}
+
+section img {
+    width: 726px;
+    height: 700px;
+    padding-right: 20px;
+    margin-right: 90px;
+    border-right-style: solid;
+    margin-top: -100px;
+   
+}
+.saleInfo{
+    position: absolute;
+}
+.saleInfo h3 {
+
+    font-family: 'Jockey One', sans-serif;
+    font-size: 96px;
+    color: #000000;
+    margin-bottom: 20px;
+   
+
+}
+.Line {
+    border-left: 5px solid #F66B6A;
+    position: absolute;
+    height: 50px;
+}
+
+.Line p {
+    font-family: 'Jockey One', sans-serif;
+    color: #000000;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+
+
+.btn {
+    background: none; 
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: -12%;
+    position: absolute;
+    border: 2px solid #F66B6A;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+.btn:hover {
+    background-color: #F66B6A;
+    color: white;
+}
+
+.arrow {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* make the footer elements row flex */
+footer {
+    display: flex;
+    justify-content: center; /* Center the icon row horizontally */
+    align-items: center; /* Align items vertically */
+    padding: 20px; /* Add some padding to the footer */
+    background-color: white; /* Set a background color */
+}
+
+.icon-row {
+    display: flex;
+    flex-direction: row; /* Display icons in a row */
+    justify-content: center; /* Center the icons within the row */
+    align-items: center; /* Align items vertically */
+    gap: 40px; /* Add more spacing between icons */
+}
+
+.icon {
+    display: flex;
+    flex-direction: row; /* Display image and text side by side */
+    align-items: center; /* Align items vertically */
+    gap: 15px; /* Add more spacing between image and text */
+    text-align: left; /* Align text to the left */
+    background-color: #ffffff; /* Add a background color to each icon */
+    padding: 10px 20px; /* Add padding inside each icon */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.3s ease; /* Add a transition for hover effect */
+}
+
+.icon:hover {
+    transform: translateY(-5px); /* Slightly lift the icon on hover */
+}
+
+.icon img {
+    width: 50px; /* Set a fixed width for the images */
+    height: auto; /* Maintain aspect ratio */
+    position: relative;
+}
+
+.icon .text {
+    display: flex;
+    flex-direction: column; /* Stack text elements vertically */
+}
+
+footer h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: #000000;
+    margin: 0; /* Remove default margin */
+}
+
+footer p {
+    font-family: 'Inter', sans-serif;
+    color: #666666; /* Set a lighter color for the paragraph text */
+    margin: 5px 0 0; /* Adjust margin for better spacing */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    header {
+        margin: 40px 40px 0 40px;
+    }
+
+    section {
+        margin-left: 40px;
+    }
+
+    .SaleImg {
+        justify-content: center;
+    }
+
+    section img {
+        margin-right: 40px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        margin: 20px 20px 0 20px;
+    }
+
+    section {
+        margin-left: 20px;
+    }
+
+    .SaleImg {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section img {
+        margin-right: 0;
+        padding-right: 0;
+        margin-top: 0;
+        border-right: none;
+    }
+
+    .saleInfo {
+        position: static;
+    }
+
+    .saleInfo h3 {
+        font-size: 48px;
+        padding-left: 2%;
+    }
+
+    
+
+    .btn {
+        position: static;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        margin: 10px 10px 0 10px;
+    }
+
+    section {
+        margin-left: 10px;
+    }
+
+    .saleInfo h3 {
+        font-size: 32px;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .icon {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .icon img {
+        margin-bottom: 10px;
+    }
+
+    .SaleImg img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Additional Media Query for Very Small Screens */
+@media (max-width: 320px) {
+    .saleInfo h3 {
+        font-size: 24px;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
