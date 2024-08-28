@@ -41,8 +41,8 @@ CREATE TABLE Users (
 
 # index 
 CREATE INDEX idx_Clothing_Name ON Clothing(Name);
-# CREATE INDEX idx_Clothing_Name ON Clothing(Name);
-# CREATE INDEX idx_ChildrensClothing_Name ON ChildrensClothing(Name);
+CREATE INDEX idx_Clothing_Type ON Clothing(Type);
+CREATE INDEX idx_Clothing_Color ON Clothing(Color);
 
 
 # random data 
