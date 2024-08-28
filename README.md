@@ -13,8 +13,8 @@ CREATE TABLE Category (
   CategoryName VARCHAR(20)
 );
 
-CREATE TABLE Clothing (
-  ClothingID INT PRIMARY KEY,
+CREATE TABLE Products (
+  ProductID INT PRIMARY KEY,
   CategoryID INT,
   Name VARCHAR(50),
   Type VARCHAR(50),
@@ -36,14 +36,23 @@ CREATE TABLE Admins (
 CREATE TABLE Users ( 
   UserID INT PRIMARY KEY, 
   Username VARCHAR(50), 
+  Adress VARCHAR(50), 
   Password VARCHAR(50)
 );
+
+CREATE TABLE Orders (
+  OrderID INT PRIMARY KEY,
+  UserID INT,
+  ProductID INT, 
+  FORGEIN KEY (ProductID) REFERENCES Products(ProductID),
+  FORGEIN KEY (UserID) REFERENCES Users(UserID)
+);
+
 
 # index 
 CREATE INDEX idx_Clothing_Name ON Clothing(Name);
 CREATE INDEX idx_Clothing_Type ON Clothing(Type);
 CREATE INDEX idx_Clothing_Color ON Clothing(Color);
-
 
 # random data 
 INSERT INTO Category (CategoryID, CategoryName)
@@ -52,7 +61,7 @@ VALUES
     (2, 'Women'),
     (3, 'Children');
 
-INSERT INTO Clothing (ClothingID, CategoryID, Name, Type, Description, Price, Color, Size, Amount, Image)
+INSERT INTO Products (ProductID, CategoryID, Name, Type, Description, Price, Color, Size, Amount, Image)
 VALUES
     (1, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'S', 40, LOAD_FILE('c:\T-Shirt.png')),
     (2, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'M', 800, LOAD_FILE('c:\T-Shirt.png')),
