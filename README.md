@@ -21,6 +21,7 @@ CREATE TABLE Products (
   Description TEXT,
   IMAGE BLOB,
   Price INT,
+  Discount INT,
   Color VARCHAR(50),
   Size VARCHAR(10),
   Amount INT, 
@@ -40,19 +41,34 @@ CREATE TABLE Users (
   Password VARCHAR(50)
 );
 
+CREATE TABLE Workers ( 
+  WorkerID INT PRIMARY KEY, 
+  Name VARCHAR(50), 
+  Hours INT, 
+  Leaves INT
+);
+
 CREATE TABLE Orders (
   OrderID INT PRIMARY KEY,
   UserID INT,
-  ProductID INT, 
-  FORGEIN KEY (ProductID) REFERENCES Products(ProductID),
-  FORGEIN KEY (UserID) REFERENCES Users(UserID)
+  Status VARCHAR(50),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID),
 );
 
+CREATE TABLE OrderItem (
+  OrderItemID INT PRIMARY KEY,
+  OrderID INT,
+  ProductID INT, 
+  Status VARCHAR(50),
+  FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+  FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
 
 # index 
-CREATE INDEX idx_Clothing_Name ON Clothing(Name);
-CREATE INDEX idx_Clothing_Type ON Clothing(Type);
-CREATE INDEX idx_Clothing_Color ON Clothing(Color);
+CREATE INDEX idx_Products_Name ON Products(Name);
+CREATE INDEX idx_Products_Type ON Products(Type);
+CREATE INDEX idx_Products_Color ON Products(Color);
+CREATE INDEX idx_User_Username ON Users(Username);
 
 # random data 
 INSERT INTO Category (CategoryID, CategoryName)
@@ -80,5 +96,9 @@ VALUES
 INSERT INTO Admins (AdminID, Name, Password)
 VALUES
     (1, 'Admin', 'Admin');
+
+INSERT INTO Workers (WorkerID, Name, Hours, Leaves)
+VALUES
+    (1, 'Joe', 100);
 
 ```
