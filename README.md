@@ -51,8 +51,9 @@ CREATE TABLE Workers (
 CREATE TABLE Orders (
   OrderID INT PRIMARY KEY,
   UserID INT,
+  Date DATE,
   Status VARCHAR(50),
-  FOREIGN KEY (UserID) REFERENCES Users(UserID),
+  FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
 CREATE TABLE OrderItem (
@@ -99,6 +100,6 @@ VALUES
 
 INSERT INTO Workers (WorkerID, Name, Hours, Leaves)
 VALUES
-    (1, 'Joe', 100);
+    (1, 'Joe', 100, 0);
 
 ```
