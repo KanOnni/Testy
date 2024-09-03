@@ -1,0 +1,125 @@
+/* Basic Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: white;
+    position: relative;
+    z-index: 10;
+}
+nav{
+    width: 90%;
+}
+
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2em;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #F66B6A;
+    font-weight: bold;
+}
+
+.hamburger-menu {
+    cursor: pointer;
+    float: right;
+
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: #F66B6A; /* Updated color for spans */
+    transition: 0.4s;
+}
+
+/* Hamburger Menu Styling */
+.menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #F66B6A;
+    color: white;
+    transition: right 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2em;
+    z-index: 15;
+}
+
+.menu.open {
+    right: 0;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+
+/* Menu List Styling */
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 2em 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center items horizontally */
+}
+
+.menu ul li {
+    margin-bottom: 1.5em;
+    width: 100%; /* Make each item take full width */
+    display: flex; /* Use flex to center content */
+    justify-content: center; /* Center content horizontally */
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}/* 
+.nav-links.hidden {
+    display: none;
+} */
+/* hover animation  */
+
+.menu ul li:hover {
+        border-radius: 25px;
+        background: #ffffff1f;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
