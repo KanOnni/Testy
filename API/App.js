@@ -12,7 +12,9 @@ const { Product } = require("./mongo/schemas/productSchema");
 const { User } = require("./mongo/schemas/userSchema");
 const { Order } = require("./mongo/schemas/orderSchema");
 const { OrderItem } = require("./mongo/schemas/orderItemSchema");
-const e = require (".env");
+require('dotenv').config();
+const url = process.env.URL;
+
 
 app.use(express.json());
 app.use(cors());
@@ -24,7 +26,7 @@ app.use("/orders", ordersRouter);
 app.use("/orderItems", orderItemsRouter);
 
 mongoose.connect(
-    e
+    url
 
 );
 
