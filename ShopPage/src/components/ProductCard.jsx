@@ -27,7 +27,7 @@ function ProductCard({ product }) {
         <div className="star-rating">{getStarRating(rating)}</div>
       </div>
       <button className="add-to-cart-btn" type="button" title="Add to Cart" onClick={addToCart}></button>
-      <div className="sale-tag">50% OFF</div>
+      <div className="sale-tag">{product.discount}% OFF</div>
     </div>
   );
 }
