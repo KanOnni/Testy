@@ -4,7 +4,7 @@ import supportSvg from '../assets/24support.svg';
 import PaymentSvg from '../assets/secure payment.svg';
 import GuaranteeSvg from '../assets/Moneyback icon.svg';
 
-const Footer: React.FC = () => {
+const Footer = () => {
     return (
         <footer>
             <div className="icon-row">

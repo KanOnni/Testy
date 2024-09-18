@@ -3,14 +3,14 @@ import LogoSvg from '../assets/Testy.svg';
 import './Header.css'; // Ensure this line correctly imports your CSS
 import { Link } from 'react-router-dom';
 
-const Header: React.FC = () => {
+const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const handleMenuItemClick = (menuItem: string) => {
+    const handleMenuItemClick = (menuItem) => {
         console.log(`Menu item clicked: ${menuItem}`);
         setIsMenuOpen(false); // Optionally close the menu after an item is clicked
     };

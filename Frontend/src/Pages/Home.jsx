@@ -4,9 +4,7 @@ import Header from '../components/Header';
 import SaleSection from '../components/CtoSection';
 import Footer from '../components/Footer';
 
-
-
-const Home: React.FC = () => {
+const Home = () => {
   return (
         <div>
             <Header />
@@ -15,4 +13,5 @@ const Home: React.FC = () => {
         </div>
   );
 };
+
 export default Home;
