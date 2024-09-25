@@ -13,7 +13,7 @@ const SignIn = () => {
     return (
 <div className='main'>
             <div>
-                <h1 className='centere'>Sign up to testy to start your shoping</h1>
+                <h1 className='centere'>Sign in to testy to start your shoping</h1>
                 <div className='center'>
                     <div className="container">
                         <p>Username</p>
