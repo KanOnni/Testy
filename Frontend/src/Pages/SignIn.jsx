@@ -27,7 +27,7 @@ const SignIn = () => {
                     </div>
                 </div>
             <button className='signin' onClick={() => checkUser()}>SIGN IN</button>
-            <a className='center' href='./sign-in'>Don't have an account? Sign up here!</a>
+            <a className='center' href='./sign-up'>Don't have an account? Sign up here!</a>
             </div>
         </div>
   );
