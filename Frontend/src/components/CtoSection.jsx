@@ -6,8 +6,8 @@ const SaleSection = () => {
 
     const navigate = useNavigate();
 
-    const RouterToShop = () => {
-        navigate('/shop'); 
+    const RouterToSignIn = () => {
+        navigate('/sign-in'); 
     };
 
     return (
@@ -21,7 +21,7 @@ const SaleSection = () => {
             <div className="SaleImg">
                 <img className="cto img" src={Ctoimg} alt="this summer sale img" />
             </div>
-            <button className="btn" onClick={RouterToShop}>
+            <button className="btn" onClick={RouterToSignIn}>
                 SHOP NOW <span className="arrow">&#8594;</span>
             </button>
         </section>

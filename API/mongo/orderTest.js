@@ -9,7 +9,8 @@ async function getAllOrders(params) {
             id: o._id.toHexString(),
             userId: o.userId,
             date: o.date,
-            status: o.status
+            status: o.status,
+            address: o.address
         };
     });
 }
@@ -20,7 +21,8 @@ async function saveOrder(o) {
     const saveOrder = await Order.create({
             userId: o.userId,
             date: o.date,
-            status: o.status
+            status: o.status,
+            address: o.address
     });
     console.log(saveOrder);
     const orderId = saveOrder._id.toHexString();
@@ -28,7 +30,8 @@ async function saveOrder(o) {
         id: orderId,
         userId: o.userId,
         date: o.date,
-        status: o.status
+        status: o.status,
+        address: o.address
     };
 }
 

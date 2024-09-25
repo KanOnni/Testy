@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema({
     userId: { type: String, required: true },
     date: {type: Date, require: true },
-    status: { type: String, required: true }
+    status: { type: String, required: true },
+    address: { type: String, required: true }
 });
 
 orderSchema.methods.speak = function speak() {

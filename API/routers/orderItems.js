@@ -16,17 +16,19 @@ router.get("/", async function (req, res, next) {
 router.post("/", async function (req, res, next) {
     /* Taso 0 */
     try {
-        const body = req.body;
+        const i = req.body;
         console.log("🚀 ~ file: index.js ~ line 13 ~ req.body", req.body);
         
         const something = await orderItem.saveOrder({
-            userId: i.userId,
-            date: i.date,
-            status: i.status
+            orderId: i.orderId,
+            productId: i.productId,
+            price: i.price,
+            discount: i.discount,
+            amount: i.amount
         });
 
         console.log("Item awaiting save", something);
-        console.log("Outcome: " + JSON.stringify(body));
+        console.log("Outcome: " + JSON.stringify(i));
         res.json({ status: "ok", orderItem: something })
     } catch (error) {
         console.error("Error:", error);
@@ -53,12 +55,17 @@ router.put("/:id", async function (req, res, next) {
         const { id } = req.params;
         const { orderId } = req.body;
         const { productId } = req.body;
+        const { price } = req.body;
+        const { discount } = req.body;
+        const { amount } = req.body;
 
-        //Updating order
+        //Updating orderitem
         const updateOrderItem = await Order.findByIdAndUpdate(
             id, 
             { orderId },
-            { productId }
+            { productId },
+            { discount },
+            { amount }
         );
         // Anwser to update
         res.json({ orderItem: updateOrderItem })

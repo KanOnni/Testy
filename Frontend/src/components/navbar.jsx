@@ -20,7 +20,7 @@ function Navbar({ toggleMenu }) {
         <input type="text" placeholder="SEARCH" className="search-input" />
         <img src={spyglass} alt="Search Icon" className="search-icon" />
       </div>
-      <input class="cart-btn" type="image" src={cart} alt="Cart"></input>
+      <input className="cart-btn" type="image" src={cart} alt="Cart"></input>
       <div className="topnav">
         <a href="#men">MEN</a>
         <a href="#women">WOMEN</a>

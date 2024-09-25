@@ -16,17 +16,17 @@ router.get("/", async function (req, res, next) {
 router.post("/", async function (req, res, next) {
     /* Taso 0 */
     try {
-        const body = req.body;
+        const u = req.body;
         console.log("🚀 ~ file: index.js ~ line 13 ~ req.body", req.body);
         
         const something = await user.saveUser({
             username: u.username,
             password: u.password,
-            address: u.address
+            email: u.address
         });
 
         console.log("User awaiting save", something);
-        console.log("Outcome: " + JSON.stringify(body));
+        console.log("Outcome: " + JSON.stringify(u));
         res.json({ status: "ok", user: something })
     } catch (error) {
         console.error("Error:", error);
@@ -53,14 +53,14 @@ router.put("/:id", async function (req, res, next) {
         const { id } = req.params;
         const { username } = req.body;
         const { password } = req.body;
-        const { address } = req.body;
+        const { email } = req.body;
 
         //Updating user
         const updateUser = await User.findByIdAndUpdate(
             id, 
             { username },
             { password },
-            { address },
+            { email },
             { new: true }
         );
         // Anwser to update

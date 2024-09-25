@@ -8,7 +8,10 @@ async function getAllOrderItems(params) {
         return {
             id: i._id.toHexString(),
             orderId: i.orderId,
-            productId: i.productId
+            productId: i.productId,
+            price: i.price,
+            discount: i.discount,
+            amount: i.amount
         };
     });
 }
@@ -18,14 +21,20 @@ async function saveOrderItem(i) {
     console.log("Here have item: ", JSON.stringify(i));
     const saveOrder = await Order.create({
             orderId: i.orderId,
-            productId: i.productId
+            productId: i.productId,
+            price: i.price,
+            discount: i.discount,
+            amount: i.amount
     });
     console.log(saveOrder);
     const orderItemId = saveOrder._id.toHexString();
     return {
         id: orderItemId,
         orderId: i.usorderId,
-        productId: i.productId
+        productId: i.productId,
+        price: i.price,
+        discount: i.discount,
+        amount: i.amount
     };
 }
 

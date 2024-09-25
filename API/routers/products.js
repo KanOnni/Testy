@@ -81,6 +81,7 @@ router.put("/:id", async function (req, res, next) {
             { color },
             { size },
             { amount },
+            { image },
             { new: true },
         );
         // Anwser to update

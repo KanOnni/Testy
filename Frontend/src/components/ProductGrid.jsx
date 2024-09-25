@@ -5,29 +5,27 @@ function ProductGrid() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    (async () => {
-    try {
+    const fetchProducts = async () => {
+      try {
         const response = await fetch("http://localhost:3001/products", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
-                "Access-Control-Allow-Headers":
-                "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-            },
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
         });
-        const b = await response.json();
-
-        const list = b.list.map((product) => {
-        return {
-            ...product,
-        };
-        });
-        setProducts(list);
-    } catch (error) {}
-    })();
-    }, []);
+  
+        const data = await response.json();
+        const productList = data.list.map(product => ({ ...product }));
+  
+        setProducts(productList);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+  
+    fetchProducts();
+  }, []);
 
   return (
     <div className="product-grid">

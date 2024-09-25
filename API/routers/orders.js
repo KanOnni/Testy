@@ -16,7 +16,7 @@ router.get("/", async function (req, res, next) {
 router.post("/", async function (req, res, next) {
     /* Taso 0 */
     try {
-        const body = req.body;
+        const o = req.body;
         console.log("🚀 ~ file: index.js ~ line 13 ~ req.body", req.body);
         
         const something = await order.saveOrder({
@@ -26,7 +26,7 @@ router.post("/", async function (req, res, next) {
         });
 
         console.log("Order awaiting save", something);
-        console.log("Outcome: " + JSON.stringify(body));
+        console.log("Outcome: " + JSON.stringify(o));
         res.json({ status: "ok", order: something })
     } catch (error) {
         console.error("Error:", error);
@@ -54,6 +54,7 @@ router.put("/:id", async function (req, res, next) {
         const { userId } = req.body;
         const { date } = req.body;
         const { status } = req.body;
+        const { address } = req.body;
 
         //Updating order
         const updateOrder = await Order.findByIdAndUpdate(
@@ -61,6 +62,7 @@ router.put("/:id", async function (req, res, next) {
             { userId },
             { date },
             { status },
+            { address },
             { new: true }
         );
         // Anwser to update

@@ -9,7 +9,7 @@ async function getAllUsers(params) {
             id: u._id.toHexString(),
             username: u.username,
             password: u.password,
-            address: u.address,
+            email: u.email
         };
     });
 }
@@ -20,7 +20,7 @@ async function saveUser(u) {
     const saveUser = await User.create({
             username: u.username,
             password: u.password,
-            address: u.address
+            email: u.email
     });
     console.log(saveUser);
     const userId = saveUser._id.toHexString();
@@ -28,7 +28,7 @@ async function saveUser(u) {
         id: userId,
         username: u.username,
         password: u.password,
-        address: u.address
+        email: u.email
     };
 }
 
