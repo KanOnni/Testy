@@ -1,10 +1,23 @@
 const mongoose = require("mongoose");
 const { User } = require("./schemas/userSchema");
 
-/* List all */
-async function getAllUsers(params) {
+// List all
+async function getAllUsers() {
     const allUsers = await User.find();
     return allUsers.map((u) => {
+        return {
+            id: u._id.toHexString(),
+            username: u.username,
+            password: u.password,
+            email: u.email
+        };
+    });
+}
+
+
+async function findUsers(email, pass) {
+    const user = await User.find({ $and: [ { eamil: { $eq: email } }, { password: { $eq: pass } } ] });
+    return user.map((u) => {
         return {
             id: u._id.toHexString(),
             username: u.username,
@@ -18,9 +31,9 @@ async function getAllUsers(params) {
 async function saveUser(u) {
     console.log("Here have users: ", JSON.stringify(u));
     const saveUser = await User.create({
-            username: u.username,
-            password: u.password,
-            email: u.email
+        username: u.username,
+        password: u.password,
+        email: u.email
     });
     console.log(saveUser);
     const userId = saveUser._id.toHexString();
@@ -47,4 +60,4 @@ async function deleteUser(id) {
     }
 }
 
-module.exports = { getAllUsers, saveUser, deleteUser };
+module.exports = { getAllUsers, findUsers, saveUser, deleteUser };

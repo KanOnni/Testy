@@ -10,7 +10,12 @@ function App() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  
+  if (localStorage.getItem("remeber") == false) {
+    localStorage.clear("remember");
+    localStorage.clear("id")
+  }
+  
   return (
     <div className="App">
       <header>

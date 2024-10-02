@@ -12,14 +12,9 @@ const productSchema = new mongoose.Schema({
     size: { type: String, required: true },
     amount: { type: Number, required: true },
     image: { type: String, required: false }
+}, {
+    versionKey: false
 });
-
-productSchema.methods.speak = function speak() {
-    const greeting = this.name
-     ? "I am a " + this.name
-     : "I don't have a name";
-    console.log(greeting);
-}
 
 /* 2. module */
 const Product = mongoose.model("Product", productSchema);

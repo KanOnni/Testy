@@ -3,15 +3,17 @@ import './Auth.css'
 import { Router } from 'react-router-dom';
 
 const SignUp = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [address, setAddress] = useState("");
+    let togle = false;
     const [nameHere, setNameHere] = useState("");
     const [passHere, setPassHere] = useState("");
     const [addHere, setAddHere] = useState("");
 
-    useEffect(() => {
-        if (!username || !password || password.length < 5 || !address) {
+    const addUser = async () => {
+        setNameHere("");
+        setPassHere("");
+        setAddHere(""); 
+
+        if (!document.getElementById("name").value || !document.getElementById("pass").value || document.getElementById("pass").value.length < 5 || !document.getElementById("email").value) {
 
             if (!username) {
                 setNameHere("Please enter name");
@@ -21,19 +23,15 @@ const SignUp = () => {
             } else if (password.length < 5) {
                 setPassHere("Password must be at least 5 character");
             }
-            if (!address) {
-                setAddHere("Please enter your address");
+            if (!email) {
+                setAddHere("Please enter your email");
             }
 
         } else {
-            postUserData();
-        }
-        
-        async function postUserData() {
             try {
-                const response = await fetch("http://localhost:3001/users", {
+                const response = await fetch("http://localhost:3001/users/add", {
                     method: "POST",
-                    body: JSON.stringify({ username: username, address: address, password: password }),
+                    body: JSON.stringify({ username: document.getElementById("name").value, password: document.getElementById("pass").value, email: document.getElementById("email").value }),
                     headers: {
                         "Content-Type": "application/json",
                         "Access-Control-Allow-Origin": "*",
@@ -44,29 +42,19 @@ const SignUp = () => {
                 });
                 const y = await response.json();
                 console.log("🚀 ~ file: SignUp.jsx ~ line 80 ~ addUser ~ y", y);
+                localStorage.setItem("id", y.user.id);
+                localStorage.setItem("remeber", togle);
                 location.href = 'http://localhost:5173/shop';
             } catch (error) {
-                console.error("🚀 ~ file: SignUp.jsx ~ line 51 ~ addKitty ~ error", error);
+                console.error("file: SignUp.jsx ~ line: 52 ~ function: postUserData ~ error: ", error);
             }
         }
-    }, [nameHere, passHere, addHere]);
-
-    const addUser = async () => {
-        setNameHere("");
-        setPassHere("");
-        setAddHere(""); 
-        const nameInput = document.getElementById("name").value;
-        const passInput = document.getElementById("pass").value;
-        const addInput = document.getElementById("add").value;
-        setUsername(nameInput);
-        setPassword(passInput);
-        setAddress(addInput);
     };
 
     return (
         <div className='main'>
             <div>
-                <h1 className='centere'>Sign up to testy to start your shoping</h1>
+                <h1 className='center'>Sign up to testy to start your shoping</h1>
                 <div className='center'>
                     <div className="container">
                         <p>Username</p>
@@ -79,13 +67,19 @@ const SignUp = () => {
                         <p className='alarm'>{passHere}</p>
                     </div>
                     <div className="container">
-                        <p>Address</p>
-                        <input type="text" placeholder="Address" className="address-input" id='add' autoComplete="off"/>
+                        <p>Email</p>
+                        <input type="text" placeholder="Email" className="email-input" id='email' autoComplete="off"/>
                         <p className='alarm'>{addHere}</p>
                     </div>
                 </div>
-            <button className='signin' onClick={() => addUser()}>SIGN UP</button>
-            <a className='center' href='./sign-in'>Already have an account? Sign in here!</a>
+                <div className="remeberTogle">
+                    <input value={togle} type="checkbox"></input>
+                    <p>Remember me</p>
+                </div>
+                <div className='center'>
+                    <button className='signin' onClick={() => addUser()}>SIGN UP</button>
+                </div>
+                <a className='center' href='./sign-in'>Already have an account? Sign in here!</a>
             </div>
         </div>
   );

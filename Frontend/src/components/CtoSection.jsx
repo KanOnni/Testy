@@ -7,7 +7,12 @@ const SaleSection = () => {
     const navigate = useNavigate();
 
     const RouterToSignIn = () => {
-        navigate('/sign-in'); 
+        localStorage.clear()
+        if (!localStorage.getItem("id")) {
+            navigate('/sign-in'); 
+        } else {
+            navigate('/shop')
+        }
     };
 
     return (

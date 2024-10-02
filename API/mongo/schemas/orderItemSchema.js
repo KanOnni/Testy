@@ -7,14 +7,9 @@ const orderItemSchema = new mongoose.Schema({
     price: {type: Date, require: true },
     discount: {type: Date, require: true },
     amount: {type: Date, require: true }
+}, {
+    versionKey: false
 });
-
-orderItemSchema.methods.speak = function speak() {
-    const greeting = this.orderId
-     ? "My owner id is " + this.orderIds
-     : "I don't have a owner";
-    console.log(greeting);
-}
 
 /* 2. module */
 const OrderItem = mongoose.model("OrderItem", orderItemSchema);
