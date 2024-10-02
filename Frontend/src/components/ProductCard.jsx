@@ -18,8 +18,8 @@ function ProductCard({ product }) {
 
   return (
     <div className="product-card" id={`product-${product.id}`}>
-      <img src={product.image.toString('base64')} alt={product.name} className="product-image" />
       <div className="product-details">
+        <img src={product.image.toString('base64')} alt={product.name} className="product-image" />
         <p className="product-title">{product.name}</p>
         <div className="price-container">
           <span className="product-price">${discountedPrice}</span>
