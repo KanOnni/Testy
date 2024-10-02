@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function ProductCard({ product }) {
   const discountedPrice = (product.price.toFixed(2) - (product.price.toFixed(2) * (product.discount / 100))).toFixed(2);
@@ -12,12 +12,13 @@ function ProductCard({ product }) {
   };
 
   const addToCart = () => {
-    console.log(`Added ${product.name} to cart`);
+    setOrder((order) => [...order, product.id]); // Update state immutably
+    console.log(order); // Log updated order array for debugging
   };
 
   return (
     <div className="product-card" id={`product-${product.id}`}>
-      <img src={product.image} alt={product.name} className="product-image" />
+      <img src={product.image.toString('base64')} alt={product.name} className="product-image" />
       <div className="product-details">
         <p className="product-title">{product.name}</p>
         <div className="price-container">

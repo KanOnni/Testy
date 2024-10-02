@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
     color: { type: String, required: true },
     size: { type: String, required: true },
     amount: { type: Number, required: true },
-    image: { type: String, required: false }
+    image: { type: Buffer, required: false }
 }, {
     versionKey: false
 });

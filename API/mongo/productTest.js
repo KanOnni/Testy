@@ -5,6 +5,14 @@ const { Product } = require("./schemas/productSchema");
 async function getAllProducts(params) {
     const allProducts = await Product.find();
     return allProducts.map((p) => {
+        let imageUrl = "";
+        if (!p.image) {
+            imageUrl = "";
+        } else {
+            const base64Image = p.image.toString('base64');
+            imageUrl = `data:image/png;base64,${base64Image}`;
+        }
+        
         return {
             id: p._id.toHexString(),
             name: p.name,
@@ -16,7 +24,7 @@ async function getAllProducts(params) {
             color: p.color,
             size: p.size,
             amount: p.amount,
-            image: p.image
+            image: imageUrl
         };
     });
 }
