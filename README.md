@@ -46,14 +46,14 @@ GET /products - // Fetch all products.
 GET /products/:id - // Fetch a product by its ID.
 POST /products - // Add a new product.
 PUT /products/:id - // Update an existing product by ID.
--DELETE /products/:id - // Delete a product by ID.
+DELETE /products/:id - // Delete a product by ID.
 
 Users
 
 GET /users - // Fetch all users.
 GET /users/:id - // Fetch a user by ID.
 POST /users - // Create a new user.
-POST / user/email - // finds users by email 📧
+POST /user/find - // finds users by email 📧
 PUT /users/:id - // Update an existing user by ID.
 DELETE /users/:id - // Delete a user by ID.
 
