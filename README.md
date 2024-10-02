@@ -1,105 +1,75 @@
-# Web-and-c-project
+# Express REST API with MongoDB
 
-## Database
+This project is a RESTful API built with **Express.js** and **MongoDB**. It provides endpoints for managing products, users, orders, and order items. The app uses **Mongoose** for database interaction and includes essential middleware such as logging, CORS handling, and error management.
 
-``` py
+## Features
 
-CREATE DATABASE testy;
+- CRUD operations for products, users, orders, and order items.
+- MongoDB database connection using **Mongoose**.
+- Error handling and logging with **morgan**.
+- CORS support for cross-origin requests.
+- Environment variable configuration using **dotenv**.
 
-USE testy;
+## Prerequisites
 
-CREATE TABLE Category (
-  CategoryID INT PRIMARY KEY,
-  CategoryName VARCHAR(20)
-);
+Before you begin, ensure you have the following installed:
 
-CREATE TABLE Products (
-  ProductID INT PRIMARY KEY,
-  CategoryID INT,
-  Name VARCHAR(50),
-  Type VARCHAR(50),
-  Description TEXT,
-  IMAGE BLOB,
-  Price INT,
-  Discount INT,
-  Color VARCHAR(50),
-  Size VARCHAR(10),
-  Amount INT, 
-  FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
-);
+- **Node.js** (version 14 or higher)
+- **MongoDB** instance (local or remote)
 
-CREATE TABLE Admins ( 
-  AdminID INT PRIMARY KEY, 
-  Name VARCHAR(50), 
-  Password VARCHAR(50)
-);
+## Installation
 
-CREATE TABLE Users ( 
-  UserID INT PRIMARY KEY, 
-  Username VARCHAR(50), 
-  Adress VARCHAR(50), 
-  Password VARCHAR(50)
-);
+Follow these steps to get the project running locally:
 
-CREATE TABLE Workers ( 
-  WorkerID INT PRIMARY KEY, 
-  Name VARCHAR(50), 
-  Hours INT, 
-  Leaves INT
-);
+1. Clone the repository:
 
-CREATE TABLE Orders (
-  OrderID INT PRIMARY KEY,
-  UserID INT,
-  Date DATE,
-  Status VARCHAR(50),
-  FOREIGN KEY (UserID) REFERENCES Users(UserID)
-);
+   ```bash
+   https://github.com/KanOnni/Web-and-c-project.git
 
-CREATE TABLE OrderItem (
-  OrderItemID INT PRIMARY KEY,
-  OrderID INT,
-  ProductID INT, 
-  Status VARCHAR(50),
-  FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-  FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
-);
+2. Navigate to the project directory:
+3. Do all the following 
+   ```cmd
+    cd Web-and-c-project
+    npm install
+   // Create a .env file in the root of the project with the following content:
+   URL=mongodb://<your-mongodb-url>
 
-# index 
-CREATE INDEX idx_Products_Name ON Products(Name);
-CREATE INDEX idx_Products_Type ON Products(Type);
-CREATE INDEX idx_Products_Color ON Products(Color);
-CREATE INDEX idx_User_Username ON Users(Username);
+4. Check if enverything looks good and then start the application
+   ```cmd
+     node app.js
 
-# random data 
-INSERT INTO Category (CategoryID, CategoryName)
-VALUES
-    (1, 'Men'),
-    (2, 'Women'),
-    (3, 'Children');
+## API Endpoints
 
-INSERT INTO Products (ProductID, CategoryID, Name, Type, Description, Price, Color, Size, Amount, Image)
-VALUES
-    (1, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'S', 40, LOAD_FILE('c:\T-Shirt.png')),
-    (2, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'M', 800, LOAD_FILE('c:\T-Shirt.png')),
-    (3, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'L', 40, LOAD_FILE('c:\T-Shirt.png')),
-    (4, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'White', 'S', 50, LOAD_FILE('c:\T-Shirt.png')),
-    (5, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'White', 'M', 100, LOAD_FILE('c:\T-Shirt.png')),
-    (6, 1, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'White', 'L', 50, LOAD_FILE('c:\T-Shirt.png')),
-    (7, 2, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'S', 60, LOAD_FILE('c:\T-Shirt.png')),
-    (8, 2, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'M', 100, LOAD_FILE('c:\T-Shirt.png')),
-    (9, 2, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', 'L', 40, LOAD_FILE('c:\T-Shirt.png')),
-    (10, 3, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', '80 cm', 50, LOAD_FILE('c:\T-Shirt.png')),
-    (11, 3, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', '100 cm', 100, LOAD_FILE('c:\T-Shirt.png')),
-    (12, 3, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', '120 cm', 50, LOAD_FILE('c:\T-Shirt.png')),
-    (13, 3, 'T-shirt', 'Shirt', 'Lorem Ipsum', 200, 'Wine red', '140 cm', 50, LOAD_FILE('c:\T-Shirt.png'));
+  ```js
+Products
+GET /products - // Fetch all products.
+GET /products/:id - // Fetch a product by its ID.
+POST /products - // Add a new product.
+PUT /products/:id - // Update an existing product by ID.
+-DELETE /products/:id - // Delete a product by ID.
 
-INSERT INTO Admins (AdminID, Name, Password)
-VALUES
-    (1, 'Admin', 'Admin');
+Users
 
-INSERT INTO Workers (WorkerID, Name, Hours, Leaves)
-VALUES
-    (1, 'Joe', 100, 0);
+GET /users - // Fetch all users.
+GET /users/:id - // Fetch a user by ID.
+POST /users - // Create a new user.
+POST / user/email - // finds users by email 📧
+PUT /users/:id - // Update an existing user by ID.
+DELETE /users/:id - // Delete a user by ID.
 
-```
+Orders
+
+GET /orders - // Fetch all orders.
+GET /orders/:id - // Fetch an order by ID.
+POST /orders - // Create a new order.
+PUT /orders/:id - // Update an existing order by ID.
+DELETE /orders/:id - // Delete an order by ID.
+
+Order Items
+
+GET /orderItems - // Fetch all order items.
+GET /orderItems/:id - // Fetch an order item by ID.
+POST /orderItems - // Create a new order item.
+PUT /orderItems/:id - // Update an existing order item by ID.
+DELETE /orderItems/:id - // Delete an order item by ID.
+   
