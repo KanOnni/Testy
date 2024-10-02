@@ -26,7 +26,7 @@ const Footer = () => {
                     <img src={PaymentSvg} alt="Secure Payment" />
                     <div className="text">
                         <h6>Secure Payment</h6>
-                        <p>We ensure your money is save</p>
+                        <p>We ensure your money is safe</p>
                     </div>
                 </div>
                 <div className="icon">
