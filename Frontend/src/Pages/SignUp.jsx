@@ -29,7 +29,7 @@ const SignUp = () => {
 
         } else {
             try {
-                const response = await fetch("http://localhost:3001/users/add", {
+                const response = await fetch("http://localhost:3001/users/", {
                     method: "POST",
                     body: JSON.stringify({ username: document.getElementById("name").value, password: document.getElementById("pass").value, email: document.getElementById("email").value }),
                     headers: {

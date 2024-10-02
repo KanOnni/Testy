@@ -28,7 +28,7 @@ router.get("/", async function (req, res, next) {
 */
 
 /* POST home page or POST index root */
-router.post("/add", async function (req, res, next) {
+router.post("/", async function (req, res, next) {
     /* Taso 0 */
     try {
         const u = req.body;
