@@ -5,7 +5,7 @@ import logo from '../assets/img/logo.png';
 import spyglass from '../assets/img/Spyglass.png';
 import cart from '../assets/img/shopping-cart.png';
 
-function Navbar({ toggleMenu }) {
+function Navbar({ toggleMenu, carts }) {
   return (
     <div className="navbar">
       <input 
@@ -16,11 +16,16 @@ function Navbar({ toggleMenu }) {
         onClick={toggleMenu}
       />
       <img className="logo-img" src={logo} alt="Testy Logo" />
-      <div className="search-container">
-        <input type="text" placeholder="SEARCH" className="search-input" />
-        <img src={spyglass} alt="Search Icon" className="search-icon" />
+      <div className='right-side'>
+        <div className="search-container">
+          <input type="text" placeholder="SEARCH" className="search-input" />
+          <img src={spyglass} alt="Search Icon" className="search-icon" />
+        </div>
+        <div className="cart-container">
+          <input className="cart-btn" type="image" src={cart} alt="Cart" />
+          <span className="cart-count">{carts}</span>
+        </div>
       </div>
-      <input className="cart-btn" type="image" src={cart} alt="Cart"></input>
       <div className="topnav">
         <a href="#men">MEN</a>
         <a href="#women">WOMEN</a>

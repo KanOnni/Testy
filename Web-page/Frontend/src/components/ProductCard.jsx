@@ -10,12 +10,7 @@ function ProductCard({ product }) {
     const roundedRating = Math.round(rating);
     return fullStar.repeat(roundedRating) + emptyStar.repeat(5 - roundedRating);
   };
-
-  const addToCart = () => {
-    setOrder((order) => [...order, product.id]); // Update state immutably
-    console.log(order); // Log updated order array for debugging
-  };
-
+  
   return (
     <div className="product-card" id={`product-${product.id}`}>
       <div className="product-details">
@@ -27,7 +22,7 @@ function ProductCard({ product }) {
         </div>
         <div className="star-rating">{getStarRating(rating)}</div>
       </div>
-      <button className="add-to-cart-btn" type="button" title="Add to Cart" onClick={addToCart}></button>
+      <button className="add-to-cart-btn" type="button" title="Add to Cart" onClick={() => addToCart(product)}></button>
       <div className="sale-tag">{product.discount}% OFF</div>
     </div>
   );

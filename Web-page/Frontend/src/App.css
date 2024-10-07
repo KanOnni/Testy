@@ -53,8 +53,14 @@
     clear: both; 
 }
 
+.cart-container {
+    position: relative; /* Position relative for absolute positioning of the count */
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+  }
+  
 .cart-btn {
-    position: absolute;
+    position: relative;
     right: 0;
     border: none;
     background: none;
@@ -62,6 +68,25 @@
     margin-right: 30px; 
     width: 40px;
     height: auto;
+}
+
+.cart-count {
+    text-align: center;
+    position: relative; /* Position the count relative to the cart icon */
+    top: -5px; /* Adjust position above the icon */
+    right: -5px; /* Adjust position to the right of the icon */
+    background-color: red; /* Background color for the count bubble */
+    color: white; /* Text color for the count */
+    border-radius: 50%; /* Make it a circle */
+    padding: 5px; /* Padding inside the bubble */
+    font-size: 14px; /* Font size for the count */
+    height: 20px;
+    width: 20px;
+    font-weight: bold; /* Make count bold */
+}
+
+.right-side {
+
 }
 
 .hamburger-btn {
