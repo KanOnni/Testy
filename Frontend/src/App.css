@@ -281,6 +281,15 @@
 }
 
 @media (max-width: 768px) {
+
+    .btn {
+        bottom: 700px;
+    }
+
+    .icon-row {
+        display: flex;
+        margin-top: 200px;
+    }
     .topnav {
         display: none;
     }
@@ -293,6 +302,9 @@
         display: none;
     }
 
+    .SaleImg img {
+        display: none;
+    }
     .search-container {
         display: flex;
         justify-content: flex-end; 
@@ -315,6 +327,13 @@
     .cart-btn {
         margin-top: 5px;
         margin-right: 17px;
+    }
+}
+
+@media (max-width: 425px) {
+    .logo {
+        width: 150px;
+        height: auto;
     }
 }
 
@@ -348,5 +367,5 @@
         margin-right: 10px; 
         width: 40px;
         height: auto;
-    }    
+    }
 }

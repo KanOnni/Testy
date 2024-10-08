@@ -31,7 +31,6 @@ nav{
 .hamburger-menu {
     cursor: pointer;
     float: right;
-
 }
 
 .hamburger-icon span {
@@ -41,6 +40,7 @@ nav{
     margin: 5px 0;
     background-color: #F66B6A; /* Updated color for spans */
     transition: 0.4s;
+    margin-left: 100px;
 }
 
 /* Hamburger Menu Styling */
@@ -121,5 +121,11 @@ nav{
 
     .hamburger-menu {
         display: block;
+    }
+}
+
+@media (max-width: 425px) {
+    .hamburger-icon span {
+        margin-left: 50px
     }
 }
