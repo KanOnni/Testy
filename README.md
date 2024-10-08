@@ -31,8 +31,7 @@ Follow these steps to get the project running locally:
    ```cmd
     cd Web-and-c-project
     npm install
-   // Create a .env file in the root of the project with the following content:
-   URL=mongodb://<your-mongodb-url>
+   // Create a .env file and ask the vowner of this respotory for the connection string
 
 4. Check if enverything looks good and then start the application
    ```cmd
