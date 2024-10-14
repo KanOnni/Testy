@@ -22,7 +22,8 @@ router.post("/", async function (req, res, next) {
         const something = await order.saveOrder({
             userId: o.userId,
             date: o.date,
-            status: o.status
+            status: o.status,
+            address: o.address
         });
 
         console.log("Order awaiting save", something);
@@ -62,8 +63,7 @@ router.put("/:id", async function (req, res, next) {
             { userId },
             { date },
             { status },
-            { address },
-            { new: true }
+            { address }
         );
         // Anwser to update
         res.json({ order: updateOrder })

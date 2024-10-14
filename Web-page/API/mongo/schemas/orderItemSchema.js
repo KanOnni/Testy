@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 /* 1. Schema */
 const orderItemSchema = new mongoose.Schema({
-    orderId: { type: String, required: true },
-    productId: {type: Date, require: true },
-    price: {type: Date, require: true },
-    discount: {type: Date, require: true },
-    amount: {type: Date, require: true }
+    orderId: { type: mongoose.Schema.Types.ObjectId, required: true },
+    productId: {type: mongoose.Schema.Types.ObjectId, require: true },
+    price: {type: mongoose.Schema.Types.Decimal128, require: true },
+    discount: {type: Number, require: true },
+    amount: {type: Number, require: true }
 }, {
     versionKey: false
 });

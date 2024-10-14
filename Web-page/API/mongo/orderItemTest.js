@@ -19,7 +19,7 @@ async function getAllOrderItems(params) {
 /* Save */
 async function saveOrderItem(i) {
     console.log("Here have item: ", JSON.stringify(i));
-    const saveOrder = await Order.create({
+    const saveOrder = await OrderItem.create({
             orderId: i.orderId,
             productId: i.productId,
             price: i.price,

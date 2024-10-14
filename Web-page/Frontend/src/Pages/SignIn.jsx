@@ -2,8 +2,16 @@ import { useState, useEffect } from 'react';
 import './Auth.css';
 
 const SignIn = () => {
-  let togle = false
+  const [togle, setTogle] = useState(false);
   const [wrong, setWrong] = useState("");
+
+  const change = () => {
+    if (togle == true) {
+      setTogle(false);
+    } else {
+      setTogle(true);
+    }
+  }
 
   const checkUser = async () => {
     if (!document.getElementById("email").value || !document.getElementById("pass").value || document.getElementById("pass").value.length < 5) {
@@ -23,7 +31,7 @@ const SignIn = () => {
         const user = data;
 
         localStorage.setItem("id", user.user.id);
-        localStorage.setItem("remeber", togle);
+        localStorage.setItem("remember", togle);
 
         location.href = 'http://localhost:5173/shop';
       } catch (error) {
@@ -51,7 +59,7 @@ const SignIn = () => {
             <p className='alarm'>{wrong}</p>
           </div>
           <div className="remeberTogle">
-              <input value={togle} type="checkbox"></input>
+              <input onClick={() => change()} type="checkbox"></input>
               <p>Remember me</p>
           </div>
           <div className='center'>

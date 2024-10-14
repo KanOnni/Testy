@@ -2,7 +2,7 @@ const express = require("express");
 const app = require("../App");
 const { OrderItem } = require("../mongo/schemas/orderItemSchema");
 const router = express.Router(); //toimii ilman
-const orderItem = require("../mongo/orderTest");
+const orderItem = require("../mongo/orderItemTest");
 
 /* GET home page */
 router.get("/", async function (req, res, next) {
@@ -19,7 +19,7 @@ router.post("/", async function (req, res, next) {
         const i = req.body;
         console.log("🚀 ~ file: index.js ~ line 13 ~ req.body", req.body);
         
-        const something = await orderItem.saveOrder({
+        const something = await orderItem.saveOrderItem({
             orderId: i.orderId,
             productId: i.productId,
             price: i.price,
@@ -41,7 +41,7 @@ router.delete("/:id", async function (req, res, next) {
     try {
         const orderItemId = req.params.id;
         console.log("~ file: index.js ~ line 35 ~ orderItemId", orderItemId);
-        const test = await order.deleteorder(orderItemId);
+        const test = await order.deleteorderitem(orderItemId);
         res.json({ status: "ok" })
     } catch (error) {
         console.log("Error has ocured", error);
@@ -60,10 +60,11 @@ router.put("/:id", async function (req, res, next) {
         const { amount } = req.body;
 
         //Updating orderitem
-        const updateOrderItem = await Order.findByIdAndUpdate(
+        const updateOrderItem = await OrderItem.findByIdAndUpdate(
             id, 
             { orderId },
             { productId },
+            { price },
             { discount },
             { amount }
         );

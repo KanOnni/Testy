@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Auth.css'
-import { Router } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-    let togle = false;
+    const [togle, setTogle] = useState(false);
     const [nameHere, setNameHere] = useState("");
     const [passHere, setPassHere] = useState("");
     const [addHere, setAddHere] = useState("");
+    const navigate = useNavigate();
+
+    const change = () => {
+        setTogle(!togle);
+    }
 
     const addUser = async () => {
         setNameHere("");
@@ -44,7 +49,7 @@ const SignUp = () => {
                 console.log("🚀 ~ file: SignUp.jsx ~ line 80 ~ addUser ~ y", y);
                 localStorage.setItem("id", y.user.id);
                 localStorage.setItem("remeber", togle);
-                location.href = 'http://localhost:5173/shop';
+                navigate('../shop');
             } catch (error) {
                 console.error("file: SignUp.jsx ~ line: 52 ~ function: postUserData ~ error: ", error);
             }
@@ -73,7 +78,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className="remeberTogle">
-                    <input value={togle} type="checkbox"></input>
+                    <input onChange={() => change()} type="checkbox"></input>
                     <p>Remember me</p>
                 </div>
                 <div className='center'>
