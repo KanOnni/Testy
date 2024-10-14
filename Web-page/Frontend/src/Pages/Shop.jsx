@@ -10,6 +10,7 @@ function Shop() {
   const [cart, setCart] = useState([]);
   const [cartItem, setCartItem] = useState(0);
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("")
   const userId = localStorage.getItem("id");
   const remember = localStorage.getItem("remember");
   const navigate = useNavigate();
@@ -37,6 +38,15 @@ function Shop() {
     fetchProducts();
   }, []);
 
+    // Function to handle search input
+    const handleSearchChange = (event) => {
+      setSearchQuery(event.target.value);
+    };
+  
+    // Filter products based on search query
+    const filteredProducts = products.filter(product =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -154,7 +164,7 @@ function Shop() {
   return (
     <div className="App" onLoad={check()}>
       <header>
-        <Navbar toggleMenu={toggleMenu} carts={cartItem}/>
+      <Navbar toggleMenu={toggleMenu} carts={cartItem} searchQuery={searchQuery} handleSearchChange={handleSearchChange}/>
         <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} cart={cart} checkout={checkout} removeFromCart={removeFromCart} products={products}/>
       </header>
       <main>
@@ -162,7 +172,7 @@ function Shop() {
           <div className="trending-container">
             <a className="trendingtext">Trending</a>
           </div>
-          <ProductGrid addToCart={addToCart} products={products}/>
+          <ProductGrid addToCart={addToCart} products={filteredProducts}/>
         </section>
       </main>
       <footer>
