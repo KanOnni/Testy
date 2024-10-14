@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function SideMenu({ isOpen, toggleMenu, cart, checkout, removeFromCart }) {
+function SideMenu({ isOpen, toggleMenu, cart, checkout, removeFromCart, products }) {
   const navigate = useNavigate();
 
   const logout = () => {
@@ -22,19 +22,17 @@ function SideMenu({ isOpen, toggleMenu, cart, checkout, removeFromCart }) {
           cart.map((item, index) => (
             <li key={index} className="cart-item">
               <span>{item.name} (x{item.quantity})</span>
-              <button className="remove-button" onClick={() => removeFromCart(item)}>X</button>
+              <button className="remove-button" onClick={() => removeFromCart(item, products)}>X</button>
             </li>
           ))
         )}
       </ul>
       <div className="cart-footer">
         {cart.length > 0 && (
-          <button className="btn" onClick={() => checkout()}>{/*checkout-button*/}
-            Checkout
-          </button>
+          <button className="btn" onClick={() => checkout()}>Checkout</button>
         )}
-        <button className="" onClick={() => logout()}>Log out</button>
       </div>
+      <button className="" onClick={() => logout()}>Log out</button>
     </div>
   );
 }
