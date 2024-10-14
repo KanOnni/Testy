@@ -9,7 +9,9 @@
 
 .center {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
 }
 
 .signin {
@@ -24,6 +26,7 @@
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     font-weight: 800;
+    width: 45%;
 }
 
 .signin:hover {
@@ -90,4 +93,6 @@ a {
     display: flex;
     justify-content: center;
     color: #F66B6A;
+    margin-left: -20%;
+    gap: 10px;
 }
