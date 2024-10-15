@@ -12,6 +12,8 @@ const ProductDetail = ({ product, recommendedProducts, onClose,  addToCart, onPr
         <h2>{product.name}</h2>
         <img className='product-img' src={product.image} alt={product.name} />
         <p>{product.description}</p>
+        <p>Color: {product.color}</p>
+        <p>Size: {product.size}</p>
         <div className="price-container">
           {discountedPrice == product.price.toFixed(2) ? (
             <span className="product-price-b">${discountedPrice}</span>

@@ -66,9 +66,11 @@ function Shop() {
   }
 
   const handleProductClick = (product) => {
-    const recommendedProducts = products
-      .filter(p => p.id !== product.id)
-      .slice(0, 3); // Get 3 recommended products
+    const filteredProducts = products.filter(p => p.id !== product.id);
+
+    const rand = Math.floor(Math.random() * (filteredProducts.length - 2));
+
+    const recommendedProducts = filteredProducts.slice(rand, rand + 3);
 
     setSelectedProduct({ ...product, recommendedProducts });
   };
@@ -233,19 +235,19 @@ function Shop() {
               <div className="trending-container">
                 <a className="trendingtext" id='men'>Men</a>
               </div>
-              <ProductGrid addToCart={addToCart} products={menProducts}/>
+              <ProductGrid addToCart={addToCart} products={menProducts} onProductClick={handleProductClick}/>
             </section>
             <section>
               <div className="trending-container">
                 <a className="trendingtext" id='women'>Women</a>
               </div>
-              <ProductGrid addToCart={addToCart} products={womenProducts}/>
+              <ProductGrid addToCart={addToCart} products={womenProducts} onProductClick={handleProductClick}/>
             </section>
             <section>
               <div className="trending-container">
                 <a className="trendingtext" id='children'>Children</a>
               </div>
-              <ProductGrid addToCart={addToCart} products={kidProducts}/>
+              <ProductGrid addToCart={addToCart} products={kidProducts} onProductClick={handleProductClick}/>
             </section>
           </>
         )}
