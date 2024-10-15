@@ -29,10 +29,10 @@ function SideMenu({ isOpen, toggleMenu, cart, checkout, removeFromCart, products
       </ul>
       <div className="cart-footer">
         {cart.length > 0 && (
-          <button className="btn" onClick={() => checkout()}>Checkout</button>
+          <button className="checkout-btn" onClick={() => checkout()}>Checkout</button>
         )}
+        <button className="logout-btn" onClick={() => logout()}>Log out</button>
       </div>
-      <button className="" onClick={() => logout()}>Log out</button>
     </div>
   );
 }

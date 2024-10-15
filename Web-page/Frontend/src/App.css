@@ -4,6 +4,8 @@
 .navbar {
     margin-top: 30px;
     margin-left: 30px;
+    width: 100%;
+    
 }
 
 .topnav a {
@@ -54,39 +56,36 @@
 }
 
 .cart-container {
-    position: relative; /* Position relative for absolute positioning of the count */
-    display: flex; /* Use flexbox to align items */
-    align-items: center; /* Center items vertically */
-  }
+    margin-right:  10px;
+    height: auto;
+    width: auto;
+    float: right;
+    align-items: center;
+    cursor: pointer;
+
+}
   
 .cart-btn {
     position: relative;
     right: 0;
     border: none;
     background: none;
-    cursor: pointer;
-    margin-right: 30px; 
     width: 40px;
     height: auto;
 }
 
 .cart-count {
+    margin-left: -10px;
+    margin-top: -5px;
     text-align: center;
-    position: relative; /* Position the count relative to the cart icon */
-    top: -5px; /* Adjust position above the icon */
-    right: -5px; /* Adjust position to the right of the icon */
-    background-color: red; /* Background color for the count bubble */
-    color: white; /* Text color for the count */
-    border-radius: 50%; /* Make it a circle */
-    padding: 5px; /* Padding inside the bubble */
-    font-size: 14px; /* Font size for the count */
-    height: 20px;
+    position: absolute;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
     width: 20px;
-    font-weight: bold; /* Make count bold */
-}
-
-.right-side {
-
+    height: 20px;
+    font-size: 10;
+    font-weight: bold;
 }
 
 .hamburger-btn {
@@ -101,13 +100,12 @@
 }
 
 .search-container {
-    position: absolute;
-    right: 0;
-    margin-right: 100px;
-    margin-top: -30px;
-  }
-  
-  .search-input {
+    float: right;
+    width: 250px;
+}
+
+.search-input {
+    position: relative;
     padding: 10px 40px 10px 20px;
     border: 1px solid #F66B6A;
     border-radius: 20px;
@@ -116,24 +114,15 @@
     width: 250px;
     box-sizing: border-box;
     outline: none;
-    transition: width 0.4s ease-in-out;
-  }
-  
-  .search-input:focus {
-    width: 275px;
-  }
-  
-  .search-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
+}
 
-  .product-grid {
+.search-icon {
+    position: absolute;
+    margin-left: 200px;
+    margin-top: -30px;
+}
+
+.product-grid {
     display: grid;
     font-family: 'Inter', sans-serif;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -286,6 +275,10 @@
     font-weight: 800;
 }
 
+.remove-button:hover {
+    background-color: #0000000e;
+}
+
 .menu ul {
     list-style: none;
     padding: 0;
@@ -310,9 +303,44 @@
     font-weight: bold;
 }
 
-.menu ul li:hover {
-    border-radius: 25px;
-    background: #ffffff1f;
+.cart-footer {
+    width: 100%;
+}
+
+.checkout-btn {
+    background: none; 
+    color: #ffffffff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 0px;
+    border: 2px solid #ffffffff;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    width: 100%;
+}
+
+.checkout-btn:hover {
+    background-color: #0000000e;
+}
+
+.logout-btn {
+    background: none; 
+    color: #ffffffff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 10px;
+    border: 2px solid #ffffffff;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    width: 100%;
+}
+
+.logout-btn:hover {
+    background-color: #0000000e;
 }
 
 @media (max-width: 768px) {
@@ -342,7 +370,7 @@
     }
 
     .search-icon {
-        position: relative;
+        position: absolute;
         right: 30px;
         margin-top: 20px;
     }
