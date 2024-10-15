@@ -17,7 +17,7 @@ function Navbar({ toggleMenu, carts, searchQuery, handleSearchChange }) {
       />
       <img className="logo-img" src={logo} alt="Testy Logo" />
       <div className="cart-container">
-        <input className="cart-btn" type="image" src={cart} alt="Cart" />
+        <input className="cart-btn" type="image" src={cart} alt="Cart" onClick={toggleMenu}/>
         <span className="cart-count">{carts}</span>
       </div>
       <div className="search-container">

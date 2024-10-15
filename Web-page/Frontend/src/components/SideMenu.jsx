@@ -21,6 +21,7 @@ function SideMenu({ isOpen, toggleMenu, cart, checkout, removeFromCart, products
         ) : (
           cart.map((item, index) => (
             <li key={index} className="cart-item">
+              <img className='cart-img' src={item.image}></img>
               <span>{item.name} (x{item.quantity})</span>
               <button className="remove-button" onClick={() => removeFromCart(item, products)}>X</button>
             </li>

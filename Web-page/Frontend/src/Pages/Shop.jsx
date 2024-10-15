@@ -4,13 +4,15 @@ import SideMenu from '../components/SideMenu';
 import ProductGrid from '../components/ProductGrid';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
+import './shop.css';
 
 function Shop() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cart, setCart] = useState([]);
   const [cartItem, setCartItem] = useState(0);
   const [products, setProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const userId = localStorage.getItem("id");
   const remember = localStorage.getItem("remember");
   const navigate = useNavigate();
@@ -38,18 +40,40 @@ function Shop() {
     fetchProducts();
   }, []);
 
-    // Function to handle search input
-    const handleSearchChange = (event) => {
-      setSearchQuery(event.target.value);
-    };
-  
-    // Filter products based on search query
-    const filteredProducts = products.filter(product =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  }
+
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
+  const menProducts = products.filter(product =>
+    product.category.toLowerCase() == "men"
+  )
+
+  const womenProducts = products.filter(product =>
+    product.category.toLowerCase() == "women"
+  )
+
+  const kidProducts = products.filter(product =>
+    product.category.toLowerCase() == "children"
+  )
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  }
+
+  const handleProductClick = (product) => {
+    const recommendedProducts = products
+      .filter(p => p.id !== product.id)
+      .slice(0, 3); // Get 3 recommended products
+
+    setSelectedProduct({ ...product, recommendedProducts });
+  };
+
+  const closeProductDetail = () => {
+    setSelectedProduct(null);
   };
 
   const check = () => {
@@ -75,7 +99,7 @@ function Shop() {
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
-  };
+  }
 
   const removeFromCart = (item) => {
     setCart((prevCart) => {
@@ -97,7 +121,7 @@ function Shop() {
       }
       return prevCart;
     });
-  };
+  }
 
   const checkout = async () => {
     const address = prompt("Please enter your delivery address:");
@@ -159,21 +183,49 @@ function Shop() {
       console.error("Error during checkout:", error);
       alert("There was an error processing your order.");
     }
-  };
+  }
 
   return (
-    <div className="App" onLoad={check()}>
+    <div className="shop" onLoad={check()}>
       <header>
       <Navbar toggleMenu={toggleMenu} carts={cartItem} searchQuery={searchQuery} handleSearchChange={handleSearchChange}/>
         <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} cart={cart} checkout={checkout} removeFromCart={removeFromCart} products={products}/>
       </header>
       <main>
-        <section>
-          <div className="trending-container">
-            <a className="trendingtext">Trending</a>
-          </div>
-          <ProductGrid addToCart={addToCart} products={filteredProducts}/>
-        </section>
+        {selectedProduct ? (
+          <ProductDetail
+            product={selectedProduct}
+            recommendedProducts={selectedProduct.recommendedProducts}
+            onClose={closeProductDetail}
+          />
+        ) : (
+          <>
+            <section>
+              <div className="trending-container">
+                <a className="trendingtext">Trending</a>
+              </div>
+              <ProductGrid addToCart={addToCart} products={filteredProducts} onProductClick={handleProductClick} />
+            </section>
+            <section>
+              <div className="trending-container">
+                <a className="trendingtext" id='men'>Men</a>
+              </div>
+              <ProductGrid addToCart={addToCart} products={menProducts}/>
+            </section>
+            <section>
+              <div className="trending-container">
+                <a className="trendingtext" id='women'>Women</a>
+              </div>
+              <ProductGrid addToCart={addToCart} products={womenProducts}/>
+            </section>
+            <section>
+              <div className="trending-container">
+                <a className="trendingtext" id='children'>Children</a>
+              </div>
+              <ProductGrid addToCart={addToCart} products={kidProducts}/>
+            </section>
+          </>
+        )}
       </main>
       <footer>
       </footer>
