@@ -33,31 +33,13 @@ async function getAllProducts(params) {
 async function saveProduct(p) {
     console.log("Here have products: ", JSON.stringify(p));
     const saveProduct = await Product.create({
-            name: p.name,
-            type: p.type,
-            description: p.description,
-            price: p.price,
-            category: p.category,
-            discount: p.discount,
-            color: p.color,
-            size: p.size,
             amount: p.amount,
-            image: p.image
     });
     console.log(saveProduct);
     const productId = saveProduct._id.toHexString();
     return {
         id: productId,
-        name: p.name,
-        type: p.type,
-        description: p.description,
-        price: p.price,
-        category: p.category,
-        discount: p.discount,
-        color: p.color,
-        size: p.size,
         amount: p.amount,
-        image: p.image
     };
 }
 

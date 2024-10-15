@@ -58,30 +58,12 @@ router.delete("/:id", async function (req, res, next) {
 router.put("/:id", async function (req, res, next) {
     try {
         const { id } = req.params;
-        const { name } = req.body;
-        const { type } = req.body;
-        const { description } = req.body;
-        const { price } = req.body;
-        const { category } = req.body;
-        const { discount } = req.body;
-        const { color } = req.body;
-        const { size } = req.body;
         const { amount } = req.body;
-        const { image } = req.body;
 
         //Updating product
         const updateProduct = await Product.findByIdAndUpdate(
             id, 
-            { name },
-            { type },
-            { description },
-            { price },
-            { category },
-            { discount },
-            { color },
-            { size },
             { amount },
-            { image },
             { new: true },
         );
         // Anwser to update

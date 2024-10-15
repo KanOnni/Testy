@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ProductCard({ product, addToCart }) {
+function ProductCard({ product, addToCart, onProductClick }) {
   const discountedPrice = (product.price.toFixed(2) - (product.price.toFixed(2) * (product.discount / 100))).toFixed(2);
   const rating = product.rating ? product.rating.rate : 0;
 
@@ -13,9 +13,9 @@ function ProductCard({ product, addToCart }) {
   if (product.amount > 0 ){
     if (product.price>discountedPrice) {
       return (
-        <div className="product-card" id={`product-${product.id}`}>
+        <div className="product-card" id={`product-${product.id}`} >
           <div className="product-details">
-            <img src={product.image.toString('base64')} alt={product.name} className="product-image"/>
+            <img src={product.image.toString('base64')} alt={product.name} className="product-image" onClick={() => onProductClick(product)}/>
             <p className="product-title">{product.name}</p>
             <div className="price-container">
               <span className="product-price">${discountedPrice}</span>
@@ -31,7 +31,7 @@ function ProductCard({ product, addToCart }) {
       return (
         <div className="product-card" id={`product-${product.id}`}>
           <div className="product-details">
-            <img src={product.image.toString('base64')} alt={product.name} className="product-image" />
+            <img src={product.image.toString('base64')} alt={product.name} className="product-image" onClick={() => onProductClick(product)}/>
             <p className="product-title">{product.name}</p>
             <div className="price-container">
               <span className="product-price">${discountedPrice}</span>

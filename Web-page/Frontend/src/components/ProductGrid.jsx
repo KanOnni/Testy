@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 
-function ProductGrid( {addToCart, products, onProductClick } ) {
+function ProductGrid( { addToCart, products, onProductClick } ) {
   return (
     <div className="product-grid">
       {products.map(product => (

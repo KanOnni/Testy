@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import SideMenu from '../components/SideMenu';
 import ProductGrid from '../components/ProductGrid';
+import ProductDetail from '../components/ProductDetail';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import './shop.css';
@@ -173,10 +174,28 @@ function Shop() {
         if (!orderItemsResponse.ok) {
           throw new Error("Failed to add order items");
         }
+
+        const num = products.find(p => p.id === orderItem.productId).amount;
+        const updateProductAmountResponse = await fetch(`http://localhost:3001/products/${orderItem.productId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: num,
+          }),
+        });
+        
+        const product = await updateProductAmountResponse.json();
+        console.log(product.product.amount + " the: " + products.find(p => p.id === orderItem.productId).amount + "E" + orderItem.amount);
+
+        if (!updateProductAmountResponse.ok) {
+          throw new Error("Failed to update product amount");
+        }
       }
       
       setCart([]);
-      alert("Thank you for your order!");
+      setCartItem(0);
       toggleMenu();
       alert("Thank you for shoping with us");
     } catch (error) {
@@ -188,15 +207,19 @@ function Shop() {
   return (
     <div className="shop" onLoad={check()}>
       <header>
-      <Navbar toggleMenu={toggleMenu} carts={cartItem} searchQuery={searchQuery} handleSearchChange={handleSearchChange}/>
+        <Navbar toggleMenu={toggleMenu} carts={cartItem} searchQuery={searchQuery} handleSearchChange={handleSearchChange}/>
         <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} cart={cart} checkout={checkout} removeFromCart={removeFromCart} products={products}/>
       </header>
       <main>
+        
         {selectedProduct ? (
           <ProductDetail
             product={selectedProduct}
             recommendedProducts={selectedProduct.recommendedProducts}
             onClose={closeProductDetail}
+            addToCart={addToCart}
+            products={filteredProducts}
+            onProductClick={handleProductClick}
           />
         ) : (
           <>
