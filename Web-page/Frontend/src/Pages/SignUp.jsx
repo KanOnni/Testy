@@ -67,14 +67,14 @@ const SignUp = () => {
                         <p className='alarm'>{nameHere}</p>
                     </div>
                     <div className="container">
-                        <p>Password</p>
-                        <input type="text" placeholder="Password" className="pass-input" id='pass' autoComplete="off"/>
-                        <p className='alarm'>{passHere}</p>
-                    </div>
-                    <div className="container">
                         <p>Email</p>
                         <input type="text" placeholder="Email" className="email-input" id='email' autoComplete="off"/>
                         <p className='alarm'>{addHere}</p>
+                    </div>
+                    <div className="container">
+                        <p>Password</p>
+                        <input type="password" placeholder="Password" className="pass-input" id='pass' autoComplete="off"/>
+                        <p className='alarm'>{passHere}</p>
                     </div>
                 </div>
                 <div className="remeberTogle">

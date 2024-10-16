@@ -52,7 +52,7 @@ const SignIn = () => {
               </div>
               <div className="container">
                   <p>Password</p>
-                  <input type="text" placeholder="Password" className="pass-input" id='pass' autoComplete="off"/>
+                  <input type="password" placeholder="Password" className="pass-input" id='pass' autoComplete="off"/>
               </div>
           </div>
           <div className='center'>
