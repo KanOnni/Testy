@@ -65,7 +65,6 @@ DELETE /products/:id - // Delete a product by ID.
 Users
 
 GET /users - // Fetch all users.
-GET /users/:id - // Fetch a user by ID.
 POST /users - // Create a new user.
 POST /user/find - // finds users by email 📧
 PUT /users/:id - // Update an existing user by ID.
@@ -74,7 +73,6 @@ DELETE /users/:id - // Delete a user by ID.
 Orders
 
 GET /orders - // Fetch all orders.
-GET /orders/:id - // Fetch an order by ID.
 POST /orders - // Create a new order.
 PUT /orders/:id - // Update an existing order by ID.
 DELETE /orders/:id - // Delete an order by ID.
@@ -82,7 +80,6 @@ DELETE /orders/:id - // Delete an order by ID.
 Order Items
 
 GET /orderItems - // Fetch all order items.
-GET /orderItems/:id - // Fetch an order item by ID.
 POST /orderItems - // Create a new order item.
 PUT /orderItems/:id - // Update an existing order item by ID.
 DELETE /orderItems/:id - // Delete an order item by ID.
