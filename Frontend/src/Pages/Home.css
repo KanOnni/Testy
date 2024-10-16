@@ -152,6 +152,7 @@
     border-radius :8px ; /* Add rounded corners */  
     box-shadow :0 4px 8px rgba(0,0,0,0.1); /* Add a subtle shadow */  
     transition :transform .3s ease ; /* Add a transition for hover effect */  
+    height: 60px;
  }
  
  .icon:hover {  
@@ -241,6 +242,10 @@
     margin-top :-5%; 
  }
 
+ .icon {
+    height: 80px;
+ }
+
  }   
  
  @media (max-width :768px) {    
@@ -274,6 +279,10 @@
  font-size :48px ;
  padding-left :2%;     
  }    
+
+ .icon {
+    height: 130px;
+ }
  
  .btn {     
  padding :10px 20px ;
@@ -299,12 +308,14 @@
  .btn {     
  padding :5px 10px ;
  font-size :14px ;
+ width: 150px;
  }     
  
  .icon {     
  flex-direction :column ;
  align-items:center ;
  text-align:center ;
+ height: 90px;
  }     
  
  .icon img {     
@@ -319,6 +330,11 @@
  }   
  
  /* Additional Media Query for Very Small Screens */
+@media (max-width: 375px) {
+    .icon {
+        height: 110px;
+    }
+}
 
  @media (max-width :320px) {     
  .saleInfo h3 {     

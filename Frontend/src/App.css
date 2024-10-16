@@ -349,7 +349,7 @@
 
 @media (max-width: 320px) {
     .hamburger-btn {
-        margin-left: 0px; 
+        margin-left: 0px;
     }
     .search-input {
         animation: none;
