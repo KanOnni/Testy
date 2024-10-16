@@ -27,24 +27,39 @@ Follow these steps to get the project running locally:
    https://github.com/KanOnni/Web-and-c-project.git
 
 2. Navigate to the project directory:
-3. Do all the following 
-   ```cmd
-    cd Web-and-c-project
-    npm install
-   // Create a .env file and ask the vowner of this respotory for the connection string
+3. Now open two terminals in the directory:
+4. In the first terminal type the following:
+      ```cmd
+      cd ./Backend
+      npm i
 
-4. Check if enverything looks good and then start the application
+5. Now add the .env file it shold look like 
+   ```js
+   URL = "mongodb+srv://<username>:<password>@atlascluster.<clusterID>.mongodb.net/testy"
+
+The correct info can be accuired from the owner of this repositories owner
+
+6. And now you can start the backend
    ```cmd
-     node app.js
+    npm run start
+   //this starts the backend in localhost:3001
+
+8. In the second terminal type the following in the orde as shown here:
+      ```cmd
+      cd ./Frontend
+      npm i
+      npm run dev
+      //The last row starts the frontend in localhost:5173
+
+9. Now everything should be in order
 
 ## API Endpoints
 
   ```js
 Products
 GET /products - // Fetch all products.
-GET /products/:id - // Fetch a product by its ID.
 POST /products - // Add a new product.
-PUT /products/:id - // Update an existing product by ID.
+PUT /products/:id - // Update an existing products amount by ID.
 DELETE /products/:id - // Delete a product by ID.
 
 Users
