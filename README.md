@@ -1,2 +1,2 @@
-I am bad ata read me
+I am bad at read me
 -KanOnni
